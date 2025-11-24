@@ -37,9 +37,11 @@ def main():
         target_asnumbers = [CONFIG['asn']]
         asname_regex_patterns = [re.compile(i) for i in CONFIG['as-name-regex']]
         logger.debug('Parse AS names file')
+        as_name_parser = re.compile(r'^(\d+) ([^,]+), (\S+)$')
         for line in all_as_names:
             try:
-                asnumber, asname, ascountry = re.findall(r'^(\d+) ([^,]+), (\S+)$', line)[:]
+                logger.debug(f'{as_name_parser(line)}')
+                asnumber, asname, ascountry = as_name_parser(line)
                 for country in CONFIG['country']:
                     if country.lower() == ascountry.strip().lower():
                         logger.debug(f'Country {country} match. AS name: {asname}')
