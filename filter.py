@@ -37,7 +37,7 @@ def main():
         target_asnumbers = [CONFIG['asn']]
         asname_regex_patterns = [re.compile(i) for i in CONFIG['as-name-regex']]
         logger.debug('Parse AS names file')
-        as_name_parser = re.compile(r'^(\d+) ([^,]+), (\S+)$')
+        as_name_parser = re.compile(r'^(\d+) (.+), (\S+)$')
         for line in all_as_names:
             try:
                 asnumber, asname, ascountry = as_name_parser.findall(line)[0]
