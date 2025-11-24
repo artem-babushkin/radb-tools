@@ -1,12 +1,12 @@
-asnames-url: "https://ftp.ripe.net/ripe/asnames/asn.txt"
 asnames-file: "asn.txt"
+asn-db: "ipasn.lst"
 prefix:
   - 1.1.1.1/32
   - 10.0.0.0/24
 asn:
   - 54115
   - 63293
-asn-name-regex:
+as-name-regex:
   - ".*youtube.*"
 country:
   - US
