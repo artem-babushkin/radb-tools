@@ -1,5 +1,5 @@
-asnames-file: "asn.txt"
-asn-db: "ipasn.lst"
+asnames-file: "cache/asn.txt"
+asn-db: "cache/ipasn.lst"
 prefix:
   - 1.1.1.1/32
   - 10.0.0.0/24
