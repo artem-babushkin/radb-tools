@@ -12,7 +12,7 @@ if [[ ! -f asn.txt ]]; then
 fi
 if [[ ! -f ipasn.lst ]]; then
   printf 'Download RIB\n'
-  timeout 600 pyasn_util_download.py --latest
+  timeout 600 pyasn_util_download.py --latest || exit 1
   printf 'Convert RIB\n'
   pyasn_util_convert.py --single $(find . -maxdepth 1 -name "rib*.bz2" -print0) ipasn.lst
 fi

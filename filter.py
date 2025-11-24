@@ -30,7 +30,7 @@ def main():
     #0 -Reserved AS-, ZZ
     #1 LVLT-1, US
 
-    workdir = os.path.dirname(os.path.abspath(sys.argv[0]))
+    workdir = os.path.dirname(os.path.abspath(argv[0]))
     all_ip_asn = pyasn.pyasn(f'{workdir}/{CONFIG["asn-db"]}')
     with open(f'{workdir}/filtered-prefixes.txt', 'w') as out, open(f'{workdir}/{CONFIG["asnames-file"]}') as all_as_names:
         target_prefixes = [CONFIG['prefix']]
