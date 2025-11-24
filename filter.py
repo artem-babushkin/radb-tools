@@ -39,7 +39,7 @@ def main():
         logger.debug('Parse AS names file')
         for line in all_as_names:
             try:
-                asnumber, asname, ascountry = re.findall(r'^(\d+) ([^,]+), (\S+)$', line)
+                asnumber, asname, ascountry = re.findall(r'^(\d+) ([^,]+), (\S+)$', line)[:]
                 for country in CONFIG['country']:
                     if country.lower() == ascountry.strip().lower():
                         logger.debug(f'Country {country} match. AS name: {asname}')
@@ -49,7 +49,7 @@ def main():
                         logger.debug(f'AS name regex {pattern.pattern} match. AS name: {asname}')
                         target_asnumbers += asnumber
             except Exception as ex:
-                logger.warn(f'Failed to parse AS names file line {line.strip()}. {ex}')
+                logger.warn(f'Failed to parse AS names file line {line.strip()}. {ex}. ')
 
 
 
