@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 cd "$(dirname $0)"
+mkdir -p cache && cd cache
 printf 'Clear old archive\n'
 rm -f rib*.bz2
 printf 'Download ASN names\n'
@@ -8,5 +9,6 @@ printf 'Download RIB\n'
 timeout 600 pyasn_util_download.py --latest
 printf 'Convert RIB\n'
 pyasn_util_convert.py --single $(find . -maxdepth 1 -name "rib*.bz2" -print0) ipasn.lst
+cd ..
 printf 'Filter RIB\n'
 ./filter.py config.yaml
