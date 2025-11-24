@@ -2,6 +2,7 @@
 from sys import argv
 import yaml
 import re
+import os
 import pyasn
 from aggregate_prefixes import aggregate_prefixes
 import logging
