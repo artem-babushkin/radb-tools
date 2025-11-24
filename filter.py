@@ -39,8 +39,7 @@ def main():
         logger.debug('Parse AS names file')
         for line in all_as_names:
             try:
-                asnumber, asname, ascountry = line.split()
-                asname = asname.rstrip(',')
+                asnumber, asname, ascountry = re.findall(r'^(\d+) ([^,]+), (\S+)$', line)
                 for country in CONFIG['country']:
                     if country.lower() == ascountry.strip().lower():
                         logger.debug(f'Country {country} match. AS name: {asname}')
