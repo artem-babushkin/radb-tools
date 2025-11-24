@@ -40,8 +40,8 @@ def main():
         as_name_parser = re.compile(r'^(\d+) ([^,]+), (\S+)$')
         for line in all_as_names:
             try:
-                logger.debug(f'{as_name_parser(line)}')
-                asnumber, asname, ascountry = as_name_parser(line)
+                logger.debug(f'{as_name_parser.findall(line)}')
+                asnumber, asname, ascountry = as_name_parser.findall(line)
                 for country in CONFIG['country']:
                     if country.lower() == ascountry.strip().lower():
                         logger.debug(f'Country {country} match. AS name: {asname}')
