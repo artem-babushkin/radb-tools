@@ -33,7 +33,7 @@ def main():
     workdir = os.path.dirname(os.path.abspath(argv[0]))
     all_ip_asn = pyasn.pyasn(f'{workdir}/{CONFIG["asn-db"]}')
     with open(f'{workdir}/filtered-prefixes.txt', 'w') as out, open(f'{workdir}/{CONFIG["asnames-file"]}') as all_as_names:
-        target_prefixes = [CONFIG['prefix']]
+        target_prefixes = []
         target_asnumbers = [CONFIG['asn']]
         asname_regex_patterns = [re.compile(i) for i in CONFIG['as-name-regex']]
         logger.debug('Parse AS names file')
@@ -60,6 +60,9 @@ def main():
         for prefix in list(aggregate_prefixes(target_prefixes)):
             number_of_prefixes += line.num_addresses
             print(str(line), file=out)
+        for prefix in CONFIG['prefix']:
+            number_of_prefixes += 1
+            print(prefix, file=out)
     logger.info(f'Found {number_of_prefixes} prefixes')
 
 
