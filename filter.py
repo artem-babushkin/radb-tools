@@ -7,7 +7,8 @@ import pyasn
 from aggregate_prefixes import aggregate_prefixes
 import logging
 logger = logging.getLogger(__name__)
-logging.basicConfig(level = logging.DEBUG)
+#logging.basicConfig(level = logging.DEBUG)
+logger.setLevel(logging.DEBUG)
 
 try:
     with open(argv[1], 'r') as f:
