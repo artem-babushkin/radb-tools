@@ -21,8 +21,6 @@ except Exception as ex:
 logger.debug(f'{CONFIG}')
 
 def main():
-    print('Hi there!')
-
     # head ipasn.lst  (asn-db)
     #1.0.6.0/24	38803
     #
@@ -59,10 +57,12 @@ def main():
                 pass
         for prefix in list(aggregate_prefixes(target_prefixes)):
             number_of_prefixes += line.num_addresses
-            print(str(line), file=out)
+            out.write(str(line))
+            #print(str(line), file=out)
         for prefix in CONFIG['prefix']:
             number_of_prefixes += 1
-            print(prefix, file=out)
+            out.write(str(line))
+            #print(prefix, file=out)
     logger.info(f'Found {number_of_prefixes} prefixes')
 
 
