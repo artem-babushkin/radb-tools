@@ -60,11 +60,11 @@ def main():
         for prefix in list(target_prefixes):
             #number_of_prefixes += line.num_addresses
             number_of_prefixes += 1
-            out.write(str(prefix))
+            out.write(f'{prefix}\n')
             #print(str(line), file=out)
         for prefix in CONFIG['prefix']:
             number_of_prefixes += 1
-            out.write(str(prefix))
+            out.write(f'{prefix}\n')
             #print(prefix, file=out)
     logger.info(f'Found {number_of_prefixes} prefixes')
 
