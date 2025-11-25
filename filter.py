@@ -55,7 +55,8 @@ def main():
                 target_prefixes.extend(list(all_ip_asn.get_as_prefixes(asn)))
             except:
                 pass
-        for prefix in list(aggregate_prefixes(target_prefixes)):
+        #for prefix in list(aggregate_prefixes(target_prefixes)):
+        for prefix in list(target_prefixes):
             number_of_prefixes += line.num_addresses
             out.write(str(line))
             #print(str(line), file=out)
