@@ -44,7 +44,7 @@ def main():
                         logger.debug(f'Country {country} match. AS name: {asname}')
                         target_asnumbers += asnumber
                 for pattern in asname_regex_patterns:
-                    if pattern.fullmatch(asname, flags=re.IGNORECASE):
+                    if pattern.match(asname.lower()):
                         logger.debug(f'AS name regex {pattern.pattern} match. AS name: {asname}')
                         target_asnumbers += asnumber
             except Exception as ex:
