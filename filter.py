@@ -58,7 +58,8 @@ def main():
         number_of_prefixes = 0
         #for prefix in list(aggregate_prefixes(target_prefixes)):
         for prefix in list(target_prefixes):
-            number_of_prefixes += line.num_addresses
+            #number_of_prefixes += line.num_addresses
+            number_of_prefixes += 1
             out.write(str(line))
             #print(str(line), file=out)
         for prefix in CONFIG['prefix']:
