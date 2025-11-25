@@ -51,8 +51,16 @@ def main():
                         target_asnumbers += asnumber
             except Exception as ex:
                 logger.warn(f'Failed to parse AS names file line {line.strip()}. {ex}. ')
-
-
+        logger.info(f'Found {len(target_asnumbers)} AS numbers')
+        for asn in target_asnumbers:
+            try:
+                target_prefixes.extend(list(all_ip_asn.get_as_prefixes(asn)))
+            except:
+                pass
+        for prefix in list(aggregate_prefixes(target_prefixes)):
+            number_of_prefixes += line.num_addresses
+            print(str(line), file=out)
+    logger.info(f'Found {number_of_prefixes} prefixes')
 
 
 
