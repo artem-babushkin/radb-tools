@@ -33,7 +33,7 @@ def main():
     all_ip_asn = pyasn.pyasn(f'{workdir}/{CONFIG["asn-db"]}')
     with open(f'{workdir}/{CONFIG["result-file"]}', 'w') as out, open(f'{workdir}/{CONFIG["asnames-file"]}') as all_as_names:
         target_prefixes = []
-        target_asnumbers = [CONFIG['asn']]
+        target_asnumbers = CONFIG['asn']
         asname_regex_patterns = [re.compile(i) for i in CONFIG['as-name-regex']]
         logger.debug('Parse AS names file')
         as_name_parser = re.compile(r'^(\d+) (.+), (\S+)$')
