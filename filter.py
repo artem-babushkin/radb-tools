@@ -49,14 +49,14 @@ def main():
                         logger.debug(f'AS name regex {pattern.pattern} match. AS name: {asname}')
                         target_asnumbers += asnumber
             except Exception as ex:
-                logger.warn(f'Failed to parse AS names file line {line.strip()}. {ex}. ')
+                logger.warning(f'Failed to parse AS names file line {line.strip()}. {ex}. ')
         logger.info(f'Found {len(target_asnumbers)} AS numbers')
         for asn in target_asnumbers:
             try:
                 target_prefixes.extend(list(all_ip_asn.get_as_prefixes(asn)))
                 logger.debug(f'Add ASN {asn} to target')
-            except:
-                pass
+            except Exception as ex:
+                logger.warning(f'Failed to add prefixes from AS {asn} to target. {ex}')
         number_of_prefixes = 0
         for prefix in list(aggregate_prefixes(target_prefixes)):
         #for prefix in list(target_prefixes):
