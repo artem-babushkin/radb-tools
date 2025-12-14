@@ -6,10 +6,10 @@ import os
 import pyasn
 from aggregate_prefixes import aggregate_prefixes
 import logging
-logger = logging.getLogger(__name__)
-logging.basicConfig(level = logging.DEBUG)
+logging.basicConfig(level = logging.INFO)
 #logger.setLevel(logging.DEBUG)
 
+logger = logging.getLogger(__name__)
 try:
     with open(argv[1], 'r') as f:
         CONFIG = yaml.safe_load(f)
@@ -28,6 +28,8 @@ def main():
     # head asn.txt    (asnames) 
     #0 -Reserved AS-, ZZ
     #1 LVLT-1, US
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
 
     workdir = os.path.dirname(os.path.abspath(argv[0]))
     all_ip_asn = pyasn.pyasn(f'{workdir}/{CONFIG["asn-db"]}')
