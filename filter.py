@@ -52,6 +52,7 @@ def main():
                 logger.warning(f'Failed to parse AS names file line {line.strip()}. {ex}. ')
         logger.info(f'Found {len(target_asnumbers)} AS numbers')
         for asn in target_asnumbers:
+            logging.debug(f'{Processing AS number {asn}')
             try:
                 target_prefixes.extend(list(all_ip_asn.get_as_prefixes(asn)))
                 logger.debug(f'Add ASN {asn} to target')
