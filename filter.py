@@ -54,6 +54,7 @@ def main():
         for asn in target_asnumbers:
             try:
                 target_prefixes.extend(list(all_ip_asn.get_as_prefixes(asn)))
+                logger.debug(f'Add ASN {asn} to target')
             except:
                 pass
         number_of_prefixes = 0
